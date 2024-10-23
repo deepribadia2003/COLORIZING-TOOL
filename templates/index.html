@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Colorization</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #007bff; /* Blue background color */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .container {
+            max-width: 600px;
+            width: 100%;
+            padding: 40px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        h1 {
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        form {
+            margin-bottom: 30px;
+        }
+
+        .file-input {
+            position: relative;
+            overflow: hidden;
+            display: inline-block;
+            cursor: pointer;
+            background-color: #5facff;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            transition: background-color 0.3s ease;
+        }
+
+        .file-input input[type="file"] {
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            opacity: 0;
+            cursor: pointer;
+        }
+
+        .file-input:hover {
+            background-color: #0056b3; /* Blue on hover */
+        }
+
+        .file-input span {
+            margin-right: 10px;
+        }
+        /* Hover effect for Choose File button */
+        .file-input-wrapper:hover {
+            background-color: #0056b3; /* Darker Blue */
+            color: #fff;
+        }
+
+        input[type="submit"] {
+            padding: 10px 30px;
+            border: none;
+            border-radius: 5px;
+            background-color: #00ff37; /* Green submit button */
+            color: #fff;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #00ba00; /* Darker Green on hover */
+        }
+
+
+        img {
+            max-width: 100%;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Image Colouring Using ML</h1>
+        <form action="/colorize" method="POST" enctype="multipart/form-data">
+            <label class="file-input">
+                <span>Choose File</span>
+                <input type="file" name="file" accept="image/*" onchange="updateFileName(this)">
+            </label>
+            <br>
+            <input type="submit" value="Colorize">
+        </form>
+    </div>
+
+    <script>
+        function updateFileName(input) {
+            var fileName = input.files[0].name;
+            input.parentNode.querySelector("span").innerText = fileName;
+        }
+    </script>
+</body>
+</html>
